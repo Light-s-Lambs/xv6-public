@@ -170,8 +170,6 @@ UPROGS=\
 	_echo\
 	_forktest\
 	_grep\
-	_hcat\
-	_helloworld\
 	_init\
 	_kill\
 	_ln\
@@ -183,10 +181,16 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
+	_helloworld\
+	_hcat\
 # Edit Here to Add New Shell Program
 
-fs.img: mkfs README $(UPROGS)
-	./mkfs fs.img README $(UPROGS)
+TEMPFILES=\
+	a.txt\
+	b.txt\
+
+fs.img: mkfs README $(UPROGS) $(TEMPFILES)
+	./mkfs fs.img README $(UPROGS) $(TEMPFILES)
 
 -include *.d
 
@@ -256,7 +260,7 @@ EXTRA=\
 	printf.c umalloc.c helloworld.c hcat.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
-# Edit Here to Add Shell Program
+# Edit Here to Add New Shell Program
 
 dist:
 	rm -rf dist
